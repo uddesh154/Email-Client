@@ -1,0 +1,36 @@
+<div class="field">
+    <label>{{label}}</label>
+    <input *ngIf="controlType === 'input'" [type]="inputType" [formControl]="control"/> 
+    <textarea *ngIf="controlType === 'textarea'" [formControl]="control"></textarea>
+    <div class="ui pointing red basic label" *ngIf="showError()">
+        <p *ngIf="control.errors?.['required']">
+            Value is required
+        </p>
+        <p *ngIf="control.errors?.['email']">
+            Enter valied email
+        </p>
+        <p *ngIf="control.errors?.['minlength']">
+            You have entered 
+            {{ control.errors?.['minlength'].actualLength }}
+            charecters but, It should be of
+            {{ control.errors?.['minlength'].requiredLength }}
+            characters
+        </p>
+        <p *ngIf="control.errors?.['maxlength']">
+            You have entered 
+            {{ control.errors?.['maxlength'].actualLength }}
+            charecters but, It should be of
+            {{ control.errors?.['maxlength'].requiredLength }}
+            characters
+        </p>
+        <p *ngIf="control.errors?.['pattern']">
+            Invalied formate
+        </p>
+        <p *ngIf="control.errors?.['noUniqueUsername']">
+            UserName is alredy in use
+        </p>
+        <p *ngIf="control.errors?.['noConnection']">
+            You are offline
+        </p>
+    </div>
+</div>
